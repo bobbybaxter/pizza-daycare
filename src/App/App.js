@@ -1,25 +1,26 @@
 import React from 'react';
 import './App.scss';
+import pizzaData from './pizza';
+import Pizza from '../components/Pizza/Pizza';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <button className="btn btn-danger">help</button>
-      </header>
+class App extends React.Component {
+  state = {
+    pizzas: [],
+  }
+
+  componentDidMount() {
+    this.setState({ pizzas: pizzaData });
+  }
+
+  render() {
+    const { pizzas } = this.state;
+
+    return (
+      <div className="App">
+      <Pizza pizzas={pizzas} />
     </div>
-  );
+    );
+  }
 }
 
 export default App;
