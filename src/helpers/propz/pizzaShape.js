@@ -8,4 +8,4 @@ const pizzaShape = PropTypes.shape({
   description: PropTypes.string.isRequired,
 });
 
-export default pizzaShape;
+export default { pizzaShape };

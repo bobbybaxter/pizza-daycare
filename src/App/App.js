@@ -2,7 +2,7 @@ import React from 'react';
 import './App.scss';
 import pizzaData from './pizza';
 import employeeData from './employees';
-import Pizza from '../components/Pizza/Pizza';
+import PizzaBox from '../components/PizzaBox/PizzaBox';
 import Employee from '../components/Employee/Employee';
 
 class App extends React.Component {
@@ -24,7 +24,7 @@ class App extends React.Component {
 
     return (
       <div className="App">
-      <Pizza pizzas={pizzas} />
+      <PizzaBox pizzas={pizzas} />
       <Employee employees={employees} />
     </div>
     );

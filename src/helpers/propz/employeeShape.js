@@ -12,4 +12,4 @@ const employeeShape = PropTypes.shape({
   about: PropTypes.string.isRequired,
 });
 
-export default employeeShape;
+export default { employeeShape };

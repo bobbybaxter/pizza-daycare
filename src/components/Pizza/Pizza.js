@@ -8,11 +8,17 @@ class Pizza extends React.Component {
   }
 
   render() {
-    // const { pizza } = this.props;
+    const { pizza } = this.props;
 
     return (
-      <div className="Pizza border">
-        This is a pizza
+      <div className="Pizza d-flex flex-row flex-wrap">
+        <div className="card">
+          <img className="card-img-top pizza-header" src={pizza.imageUrl} alt={pizza.type}/>
+          <div className="card-body">
+            <h5 className="card-title">{pizza.type}</h5>
+            <p className="card-text">{pizza.description}</p>
+          </div>
+        </div>
       </div>
     );
   }
