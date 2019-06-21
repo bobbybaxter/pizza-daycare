@@ -13,7 +13,7 @@ const pizzas = [
   },
   {
     id: 'pizza3',
-    type: 'Pepperoni Pizza',
+    type: 'Meat Lover\'s Pizza',
     imageUrl: 'https://www.pizzahut.com/assets/w/tile/thor/pizza_Meat_Lovers.png',
     description: 'Meat lover\'s pizza is the perfect game day pizza, packed with pepperoni, Italian sausage, ham, bacon, season pork and beef.',
   },
