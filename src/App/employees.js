@@ -2,7 +2,7 @@ const employees = [
   {
     id: '5d0c1260b28296a5da34dd5d',
     name: 'Sabrina',
-    picture: 'http://placehold.it/32x32',
+    picture: 'http://placehold.it/200x200',
     age: 34,
     email: 'Sabrina@$pizzadaycare.com',
     phone: '+1 (902) 491-3777',
@@ -12,7 +12,7 @@ const employees = [
   {
     id: '5d0c1260cbfdb3ec02e3fd3e',
     name: 'Marjorie',
-    picture: 'http://placehold.it/32x32',
+    picture: 'http://placehold.it/200x200',
     age: 28,
     email: 'Marjorie@$pizzadaycare.com',
     phone: '+1 (870) 465-2484',
@@ -22,7 +22,7 @@ const employees = [
   {
     id: '5d0c126013b95e104667ae56',
     name: 'Madeleine',
-    picture: 'http://placehold.it/32x32',
+    picture: 'http://placehold.it/200x200',
     age: 40,
     email: 'Madeleine@$pizzadaycare.com',
     phone: '+1 (889) 486-3165',
@@ -32,7 +32,7 @@ const employees = [
   {
     id: '5d0c126007d7dc4938ad4ea9',
     name: 'Shelby',
-    picture: 'http://placehold.it/32x32',
+    picture: 'http://placehold.it/200x200',
     age: 28,
     email: 'Shelby@$pizzadaycare.com',
     phone: '+1 (875) 526-3185',
@@ -42,7 +42,7 @@ const employees = [
   {
     id: '5d0c12608ac5dc7df01dfa69',
     name: 'Sherrie',
-    picture: 'http://placehold.it/32x32',
+    picture: 'http://placehold.it/200x200',
     age: 28,
     email: 'Sherrie@$pizzadaycare.com',
     phone: '+1 (977) 582-2198',
@@ -52,7 +52,7 @@ const employees = [
   {
     id: '5d0c12603a35336defd97b1a',
     name: 'Jacqueline',
-    picture: 'http://placehold.it/32x32',
+    picture: 'http://placehold.it/200x200',
     age: 26,
     email: 'Jacqueline@$pizzadaycare.com',
     phone: '+1 (924) 519-2889',
@@ -62,7 +62,7 @@ const employees = [
   {
     id: '5d0c12604f694edc1d17e47a',
     name: 'Mcknight',
-    picture: 'http://placehold.it/32x32',
+    picture: 'http://placehold.it/200x200',
     age: 36,
     email: 'Mcknight@$pizzadaycare.com',
     phone: '+1 (857) 509-2025',
@@ -72,7 +72,7 @@ const employees = [
   {
     id: '5d0c12604574a52c122a5762',
     name: 'Miles',
-    picture: 'http://placehold.it/32x32',
+    picture: 'http://placehold.it/200x200',
     age: 20,
     email: 'Miles@$pizzadaycare.com',
     phone: '+1 (917) 518-3556',

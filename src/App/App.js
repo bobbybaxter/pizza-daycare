@@ -3,7 +3,7 @@ import './App.scss';
 import pizzaData from './pizza';
 import employeeData from './employees';
 import PizzaBox from '../components/PizzaBox/PizzaBox';
-import Employee from '../components/Employee/Employee';
+import StaffRoom from '../components/StaffRoom/StaffRoom';
 
 class App extends React.Component {
   state = {
@@ -25,7 +25,7 @@ class App extends React.Component {
     return (
       <div className="App">
       <PizzaBox pizzas={pizzas} />
-      <Employee employees={employees} />
+      <StaffRoom employees={employees} />
     </div>
     );
   }

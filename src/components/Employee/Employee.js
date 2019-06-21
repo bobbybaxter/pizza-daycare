@@ -8,11 +8,16 @@ class Employee extends React.Component {
   }
 
   render() {
-    // const { employee } = this.props;
+    const { employee } = this.props;
 
     return (
       <div className="Employee">
-        This is an employee card!
+        <div className="card">
+          <img className="card-img-top pizza-header" src={employee.picture} alt={employee.name}/>
+          <div className="card-body">
+            <h5 className="card-title">{employee.name}</h5>
+         </div>
+        </div>
       </div>
     );
   }
