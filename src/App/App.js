@@ -1,23 +1,31 @@
 import React from 'react';
 import './App.scss';
 import pizzaData from './pizza';
+import employeeData from './employees';
 import Pizza from '../components/Pizza/Pizza';
+import Employee from '../components/Employee/Employee';
 
 class App extends React.Component {
   state = {
     pizzas: [],
+    employees: [],
   }
 
   componentDidMount() {
-    this.setState({ pizzas: pizzaData });
+    this.setState({
+      pizzas: pizzaData,
+      employees: employeeData,
+    });
   }
 
   render() {
     const { pizzas } = this.state;
+    const { employees } = this.state;
 
     return (
       <div className="App">
       <Pizza pizzas={pizzas} />
+      <Employee employees={employees} />
     </div>
     );
   }
