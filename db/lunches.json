@@ -1,0 +1,27 @@
+{
+  "lunch1": {
+    "pizzaId": "pizza1",
+    "employeeId": "employee2",
+    "date": "10/25/2019"
+  },
+  "lunch2": {
+    "pizzaId": "pizza2",
+    "employeeId": "employee3",
+    "date": "10/26/2019"
+  },
+  "lunch3": {
+    "pizzaId": "pizza3",
+    "employeeId": "employee4",
+    "date": "10/27/2019"
+  },
+  "lunch4": {
+    "pizzaId": "pizza4",
+    "employeeId": "employee5",
+    "date": "10/28/2019"
+  },
+  "lunch5": {
+    "pizzaId": "pizza5",
+    "employeeId": "employee6",
+    "date": "10/29/2019"
+  }
+}

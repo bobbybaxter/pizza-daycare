@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import pizzaShape from '../../helpers/propz/pizzaShape';
 import './PizzaBox.scss';
 
-import pizzaData from '../../App/pizza';
+import pizzaData from '../../helpers/data/pizzasData';
 import Pizza from '../Pizza/Pizza';
 
 class PizzaBox extends React.Component {
@@ -15,10 +15,14 @@ class PizzaBox extends React.Component {
     pizzas: [],
   }
 
+  loadPizzas = () => {
+    pizzaData.getPizzas()
+      .then(pizzas => this.setState({ pizzas }))
+      .catch(err => console.error('didnt load pizzas', err));
+  }
+
   componentDidMount() {
-    this.setState({
-      pizzas: pizzaData,
-    });
+    this.loadPizzas();
   }
 
   render() {
