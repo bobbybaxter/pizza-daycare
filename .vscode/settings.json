@@ -1,0 +1,39 @@
+{
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.normalModeKeyBindings": [
+    {
+        "before": ["g", "h"],
+        "commands": [
+            "cursorHome",
+        ]
+    },
+    {
+        "before": ["g", "j"],
+        "commands": [
+            "cursorBottom",
+        ]
+    },
+    {
+        "before": ["g", "k"],
+        "commands": [
+            "cursorTop",
+        ]
+    },
+    {
+        "before": ["g", "l"],
+        "commands": [
+            "cursorEnd",
+        ]
+    },
+  ],
+  "vim.useCtrlKeys": false,
+  "vim.overrideCopy": false,
+}

@@ -1,32 +1,49 @@
 import React from 'react';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+
+import Auth from '../components/Auth/Auth';
+import Home from '../components/Home/Home';
+
 import './App.scss';
-import pizzaData from './pizza';
-import employeeData from './employees';
-import PizzaBox from '../components/PizzaBox/PizzaBox';
-import StaffRoom from '../components/StaffRoom/StaffRoom';
+
+import fbConnection from '../helpers/data/connection';
+
+fbConnection();
 
 class App extends React.Component {
   state = {
-    pizzas: [],
-    employees: [],
+    authed: false,
   }
 
   componentDidMount() {
-    this.setState({
-      pizzas: pizzaData,
-      employees: employeeData,
+    this.removeListener = firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ authed: true });
+      } else {
+        this.setState({ authed: false });
+      }
     });
   }
 
+  // componentWillMount() {
+  //   this.removeListener();
+  // }
+
+
   render() {
-    const { pizzas } = this.state;
-    const { employees } = this.state;
+    const { authed } = this.state;
+    const loadComponent = () => {
+      if (authed) {
+        return <Home />;
+      }
+      return <Auth />;
+    };
 
     return (
       <div className="App">
-      <PizzaBox pizzas={pizzas} />
-      <StaffRoom employees={employees} />
-    </div>
+        {loadComponent()}
+      </div>
     );
   }
 }

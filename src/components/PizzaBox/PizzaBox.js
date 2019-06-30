@@ -1,8 +1,9 @@
 import React from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
 import pizzaShape from '../../helpers/propz/pizzaShape';
 import './PizzaBox.scss';
+
+import pizzaData from '../../App/pizza';
 import Pizza from '../Pizza/Pizza';
 
 class PizzaBox extends React.Component {
@@ -10,9 +11,18 @@ class PizzaBox extends React.Component {
     pizza: PropTypes.arrayOf(pizzaShape.pizzaShape),
   }
 
+  state = {
+    pizzas: [],
+  }
+
+  componentDidMount() {
+    this.setState({
+      pizzas: pizzaData,
+    });
+  }
+
   render() {
-    const { pizzas } = this.props;
-    const makePizzas = pizzas.map(pizza => (
+    const makePizzas = this.state.pizzas.map(pizza => (
       <Pizza key={pizza.id} pizza={pizza} />
     ));
 

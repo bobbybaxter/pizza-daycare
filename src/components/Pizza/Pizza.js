@@ -1,5 +1,7 @@
 import React from 'react';
+
 import pizzaShape from '../../helpers/propz/pizzaShape';
+
 import './Pizza.scss';
 
 class Pizza extends React.Component {
