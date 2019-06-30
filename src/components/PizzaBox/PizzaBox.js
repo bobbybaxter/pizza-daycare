@@ -31,7 +31,8 @@ class PizzaBox extends React.Component {
     ));
 
     return (
-      <div className="PizzaBox d-flex flex-row flex-wrap justify-content-around">
+      <div className="PizzaBox">
+        <h2>Pizzas</h2>
         {makePizzas}
       </div>
     );

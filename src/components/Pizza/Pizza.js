@@ -13,10 +13,10 @@ class Pizza extends React.Component {
     const { pizza } = this.props;
 
     return (
-      <div className="Pizza d-flex flex-row flex-wrap">
-        <div className="card">
-          <img className="card-img-top pizza-header" src={pizza.imageUrl} alt={pizza.type}/>
-          <div className="card-body">
+      <div className="Pizza">
+        <div className="card d-flex flex-row">
+          <img className="pizza-header" src={pizza.imageUrl} alt={pizza.type}/>
+          <div className="card-body p-1">
             <h5 className="card-title">{pizza.type}</h5>
             <p className="card-text">{pizza.description}</p>
           </div>
