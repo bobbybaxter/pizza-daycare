@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import employeeShape from '../../helpers/propz/employeeShape';
 import './StaffRoom.scss';
 
+import employeesData from '../../helpers/data/employeesData';
 import Employee from '../Employee/Employee';
-import employeeData from '../../App/employees';
 
 class StaffRoom extends React.Component {
   static propTypes = {
@@ -15,10 +15,14 @@ class StaffRoom extends React.Component {
     employees: [],
   }
 
+  loadEmployees = () => {
+    employeesData.getEmployees()
+      .then(employees => this.setState({ employees }))
+      .catch(err => console.error('didnt load employees', err));
+  }
+
   componentDidMount() {
-    this.setState({
-      employees: employeeData,
-    });
+    this.loadEmployees();
   }
 
   render() {
