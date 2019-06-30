@@ -2,6 +2,7 @@ import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
+import Navbar from '../components/MyNavbar/MyNavbar';
 import Auth from '../components/Auth/Auth';
 import Home from '../components/Home/Home';
 
@@ -26,9 +27,9 @@ class App extends React.Component {
     });
   }
 
-  // componentWillMount() {
-  //   this.removeListener();
-  // }
+  componentWillUnmount() {
+    this.removeListener();
+  }
 
 
   render() {
@@ -42,6 +43,7 @@ class App extends React.Component {
 
     return (
       <div className="App">
+        <Navbar authed={authed}/>
         {loadComponent()}
       </div>
     );

@@ -31,7 +31,8 @@ class StaffRoom extends React.Component {
     ));
 
     return (
-      <div className="StaffRoom d-flex flex-row flex-wrap justify-content-around">
+      <div className="StaffRoom">
+        <h2>Employees</h2>
         { makeEmployees }
       </div>
     );
