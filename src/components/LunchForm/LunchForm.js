@@ -1,52 +1,56 @@
 import React from 'react';
-import pizzaData from '../../helpers/data/pizzasData';
+import {
+  Form, Label, Input,
+} from 'reactstrap';
+
+import './LunchForm.scss';
 
 class LunchForm extends React.Component {
-  state = {
-    pizzas: [],
-    pizzaSelectors: [],
-  }
-
-  loadPizzas = () => {
-    pizzaData.getPizzas()
-      .then(pizzas => this.setState({ pizzas }))
-      .catch(err => console.error('pizzas didnt load', err));
-  }
-
-  componentDidMount() {
-    this.loadPizzas();
-  }
-
-  loadPizzaSelectors = (items) => {
-    const pizzaArray = [];
-    items.forEach((item) => {
-      console.error(item.type);
-      pizzaArray.push(`<option>${item.type}</option>`);
-    });
-    console.error(pizzaArray.toString());
-    return pizzaArray.toString();
+  loadPizzaSelectors = (pizzaId) => {
+    const pizza = this.props.pizzas.find(x => x.id === pizzaId);
+    return (
+      <option key={pizza.id}>
+        {pizza.type}
+      </option>
+    );
   };
 
-  render() {
-    const { pizzas } = this.state;
+  loadEmployeeSelectors = (employeeId) => {
+    const employee = this.props.employees.find(x => x.id === employeeId);
+    return (
+      <option key={employee.id}>
+        {employee.name}
+      </option>
+    );
+  };
 
+  saveLunch = (e) => {
+    e.preventDefault();
+    this.props.saveNewLunch();
+  }
+
+  render() {
     return (
       <div className="LunchForm container w-50">
-        <form>
+        <Form className="form-face shadow p-5">
           <div className="form-group">
-            <label htmlFor="pizzaFormSelections">Select a Pizza</label>
-            <select className="form-control" id="pizzaFormSelections">
-              {this.loadPizzaSelectors(pizzas)}
-              <option>1</option>
-              <option>1</option>
-              <option>1</option>
-              <option>1</option>
-              <option>1</option>
-              <option>1</option>
-            </select>
+            <Label htmlFor="pizzaFormSelections">Select a Pizza</Label>
+            <Input type="select" placeholder="" name="select" id="pizzaFormSelections" onChange={this.props.pizzaOptionChange}>
+              {this.props.pizzaIds.map(this.loadPizzaSelectors)}
+            </Input>
           </div>
-          <button type="submit" className="btn btn-primary">Add Lunch</button>
-        </form>
+          <div className="form-group">
+            <Label htmlFor="employeeFormSelections">Select an Employee</Label>
+            <Input type="select" placeholder="" name="select" id="employeeFormSelections" onChange={this.props.employeeOptionChange}>
+              {this.props.employeeIds.map(this.loadEmployeeSelectors)}
+            </Input>
+          </div>
+          <div className="form-group">
+            <Label htmlFor="lunchDate">Select a Date</Label>
+            <Input type="date" name="select" id="lunchDate" onChange={this.props.dateOptionChange}></Input>
+          </div>
+          <button type="submit" className="mt-3 btn btn-primary" onClick={this.saveLunch}>Add New Lunch</button>
+        </Form>
       </div>
     );
   }

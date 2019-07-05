@@ -16,4 +16,6 @@ const getLunches = () => new Promise((resolve, reject) => {
     .catch(err => reject(err));
 });
 
-export default { getLunches };
+const postLunch = newLunch => axios.post(`${baseUrl}/lunches.json`, newLunch);
+
+export default { getLunches, postLunch };
