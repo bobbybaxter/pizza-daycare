@@ -23,9 +23,11 @@ class LunchBox extends React.Component {
 
   render() {
     const passedLunch = this.renderLunch();
-    console.error(passedLunch);
     const makeLunches = passedLunch.map(lunch => (
-      <Lunch key={lunch.id} lunch={lunch}/>
+      <Lunch
+        key={lunch.id}
+        lunch={lunch}
+        deleteLunch={this.props.deleteLunch}/>
     ));
 
     return (

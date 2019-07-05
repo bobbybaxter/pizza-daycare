@@ -18,4 +18,6 @@ const getLunches = () => new Promise((resolve, reject) => {
 
 const postLunch = newLunch => axios.post(`${baseUrl}/lunches.json`, newLunch);
 
-export default { getLunches, postLunch };
+const deleteLunch = lunchId => axios.delete(`${baseUrl}/lunches/${lunchId}.json`);
+
+export default { getLunches, postLunch, deleteLunch };
