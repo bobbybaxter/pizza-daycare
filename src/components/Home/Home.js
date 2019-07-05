@@ -54,6 +54,12 @@ class Home extends React.Component {
     this.loadLunches();
   }
 
+  deleteLunch = (lunchId) => {
+    lunchesData.deleteLunch(lunchId)
+      .then(() => this.loadLunches())
+      .catch(err => console.error('lunch did not delete', err));
+  }
+
   pizzaOptionChange = (e) => {
     e.preventDefault();
     this.setState({ pizzaOption: e.target.value });
@@ -119,7 +125,12 @@ class Home extends React.Component {
             <StaffRoom />
           </div>
           <div className="col">
-            <LunchBox pizzas={pizzas} employees={employees} lunches={lunches}/>
+            <LunchBox
+            pizzas={pizzas}
+            employees={employees}
+            lunches={lunches}
+            deleteLunch={this.deleteLunch}
+            />
           </div>
         </div>
       </div>
