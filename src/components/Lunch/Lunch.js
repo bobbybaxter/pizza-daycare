@@ -9,6 +9,12 @@ class Lunch extends React.Component {
     deleteLunch(lunch.id);
   }
 
+  editLunch = (e) => {
+    e.preventDefault();
+    const { lunch, selectLunchToEdit } = this.props;
+    selectLunchToEdit(lunch.id);
+  }
+
   render() {
     const { lunch } = this.props;
 
@@ -22,6 +28,7 @@ class Lunch extends React.Component {
               <p className="card-text">{lunch.pizzaType}</p>
             </div>
             <div className="buttonRow d-flex flex-row justify-content-around mt-3">
+              <button className="btn btn-outline-primary" onClick={this.editLunch}>edit</button>
               <button className="btn btn-outline-danger" onClick={this.deleteLunchEvent}>delete</button>
             </div>
           </div>
