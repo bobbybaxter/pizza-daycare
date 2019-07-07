@@ -27,7 +27,9 @@ class LunchBox extends React.Component {
       <Lunch
         key={lunch.id}
         lunch={lunch}
-        deleteLunch={this.props.deleteLunch}/>
+        deleteLunch={this.props.deleteLunch}
+        selectLunchToEdit={this.props.selectLunchToEdit}
+      />
     ));
 
     return (

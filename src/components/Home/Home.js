@@ -12,14 +12,15 @@ import './Home.scss';
 
 class Home extends React.Component {
   state = {
-    pizzaOption: 'Cheese Pizza',
-    employeeOption: 'Sabrina',
+    pizzaOption: '',
+    employeeOption: '',
     dateOption: '',
     pizzas: [],
     pizzaIds: [],
     employees: [],
     employeeIds: [],
     lunches: [],
+    lunchEditing: {},
   }
 
   loadPizzas = () => {
@@ -75,7 +76,17 @@ class Home extends React.Component {
     this.setState({ dateOption: e.target.value });
   }
 
-  saveNewLunch = () => {
+  selectLunchToEdit = (lunchId) => {
+    const selectedLunch = this.state.lunches.find(x => x.id === lunchId);
+    this.setState({
+      lunchEditing: selectedLunch,
+      pizzaOption: selectedLunch.pizzaType,
+      employeeOption: selectedLunch.employeeName,
+      dateOption: selectedLunch.date,
+    });
+  }
+
+  makeNew = () => {
     const selectedPizza = this.state.pizzas.find(pizza => pizza.type === this.state.pizzaOption);
     const selectedEmployee = this.state.employees.find(
       employee => employee.name === this.state.employeeOption,
@@ -87,15 +98,61 @@ class Home extends React.Component {
     };
     lunchesData.postLunch(newLunch)
       .then(() => {
-        this.setState({ pizzaOption: 'Cheese Pizza', employeeOption: 'Sabrina', dateOption: '' });
+        this.setState({
+          lunchEditing: {}, pizzaOption: 'Cheese Pizza', employeeOption: 'Sabrina', dateOption: '',
+        });
         this.loadLunches();
       })
       .catch(err => console.error('didnt post lunch', err));
   }
 
+  updateExisting = () => {
+    const updatedLunch = { ...this.state.lunchEditing };
+    const lunchId = updatedLunch.id;
+    updatedLunch.pizzaType = this.state.pizzaOption;
+    updatedLunch.employeeName = this.state.employeeOption;
+    updatedLunch.date = this.state.dateOption;
+    const selectedPizza = this.state.pizzas.find(pizza => pizza.type === this.state.pizzaOption);
+    const selectedEmployee = this.state.employees.find(
+      employee => employee.name === this.state.employeeOption,
+    );
+    updatedLunch.pizzaId = selectedPizza.id;
+    updatedLunch.employeeId = selectedEmployee.id;
+    delete updatedLunch.id;
+    delete updatedLunch.employeeName;
+    delete updatedLunch.pizzaType;
+    lunchesData.putLunch(lunchId, updatedLunch)
+      .then(() => this.loadLunches())
+      .then(() => {
+        this.setState({
+          lunchEditing: {},
+          pizzaOption: 'Cheese Pizza',
+          employeeOption: 'Sabrina',
+          dateOption: '',
+        });
+      })
+      .catch(err => console.error('didnt update lunch', err));
+  }
+
+  saveNewLunch = () => {
+    if (Object.keys(this.state.lunchEditing).length > 0) {
+      this.updateExisting();
+    } else {
+      this.makeNew();
+    }
+  }
+
   render() {
     const {
-      pizzaOption, employeeOption, dateOption, pizzas, pizzaIds, employees, employeeIds, lunches,
+      pizzaOption,
+      employeeOption,
+      dateOption,
+      pizzas,
+      pizzaIds,
+      employees,
+      employeeIds,
+      lunches,
+      lunchEditing,
     } = this.state;
     return (
       <div className="Home d-flex flex-column">
@@ -115,6 +172,8 @@ class Home extends React.Component {
             employeeIds={employeeIds}
             loadPizzas={this.loadPizzas}
             loadEmployees={this.loadEmployees}
+            lunchEditing={lunchEditing}
+            saveEditedLunch={this.saveEditedOrder}
           />
         </div>
         <div className="row">
@@ -130,6 +189,7 @@ class Home extends React.Component {
             employees={employees}
             lunches={lunches}
             deleteLunch={this.deleteLunch}
+            selectLunchToEdit={this.selectLunchToEdit}
             />
           </div>
         </div>
